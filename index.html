@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.min.js" integrity="sha256-sw0iNNXmOJbQhYFuC9OF2kOlD5KQKe1y5lfBn4C9Sjg=" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div class="wrap">
+  <!-- <img src="./images/1.png">
+  <img src="./images/2.png">
+  <img src="./images/3.png">
+  <img src="./images/4.png">
+  <img src="./images/5.png"> -->
+</div>
+
+<style>
+*{margin: 0; padding: 0; text-align: center;}
+.wrap{display: inline-block;}
+img{display: block;}
+
+</style>
+
+<script>
+// 1~5 랜덤 숫자 생성(중복X)
+function randomArray() {
+  let array = new Set();
+
+  while (array.size < 5) {
+    array.add(Math.trunc(Math.random() * 5 + 1));
+  }
+
+  return [...array];
+}
+const random = randomArray();
+
+console.log(random.length)
+
+//이미지 태그 5개 생성
+for (let i = 0; i < random.length; i++) {
+  $('.wrap').append('<img src="./images/'+ random[i] + '.png">')
+}
+
+//드래그 앤 드롭 sortable 기능
+$( function() {
+  $( ".wrap" ).sortable();
+} );
+</script>
+
+</body>
+</html>
